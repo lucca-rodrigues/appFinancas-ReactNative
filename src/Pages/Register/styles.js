@@ -11,8 +11,10 @@ export const Container = styled.KeyboardAvoidingView`
   align-items: center;
   justify-content: center;
 `;
-export const Logo = styled.Image`
-  margin-bottom: 25px;
+export const Quasepronto = styled.Text`
+  color: #fff;
+  font-size: 25px;
+  margin-bottom: 20px;
 `;
 
 export const AreaInput = styled.View`
@@ -47,6 +49,14 @@ export const LoginLink = styled.TouchableOpacity`
 
 `;
 export const LoginText = styled.Text`
+  color: #fff;
+`;
+
+export const ButtonLogin = styled.TouchableOpacity`
+
+`;
+
+export const ButtonLoginText = styled.Text`
   color: #fff;
 `;
 

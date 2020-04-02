@@ -5,7 +5,7 @@ import {
   Background, Container, Logo, AreaInput, Input, SubmitButton, SubmitText, LoginLink, LoginText,
 } from './styles';
 
-export default function Login() {
+export default function Login({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -39,7 +39,7 @@ export default function Login() {
           <SubmitText>Acessar</SubmitText>
         </SubmitButton>
 
-        <LoginLink onPress={()=>{}}>
+        <LoginLink onPress={()=> navigation.navigate('Register')}>
           <LoginText>Criar conta gratuita.</LoginText>
         </LoginLink>
       </Container>
