@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { View, Text } from 'react-native';
+import firebase from '../../Services/firebaseConnection';
 
 import {
   Background, Container, Quasepronto, AreaInput, Input, SubmitButton, SubmitText, ButtonLogin, ButtonLoginText
@@ -9,6 +9,23 @@ export default function Register({ navigation }) {
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  firebase.auth().signOut(); // Desloga qualquer usuário que estiver Logado
+
+  async function Cadastrar(){
+    if(nome !== '' && email !== '' & password !== ''){
+      await firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then( async () => {
+        let uid = firebase.auth().currentUser.uid;
+        await firebase.database().ref('users').child(uid).set({
+          saldo: 0
+        });
+      })
+      .catch((error)=>{
+        alert(error.code);
+      })
+    }
+  }
 
   return (
     <Background>
@@ -45,7 +62,7 @@ export default function Register({ navigation }) {
           />
         </AreaInput>
 
-        <SubmitButton onPress={()=>{}}>
+        <SubmitButton onPress={Cadastrar}>
           <SubmitText>Cadastrar</SubmitText>
         </SubmitButton>
 

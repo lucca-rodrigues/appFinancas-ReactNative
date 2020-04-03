@@ -12,7 +12,9 @@ export const Container = styled.KeyboardAvoidingView`
   justify-content: center;
 `;
 export const Logo = styled.Image`
-  margin-bottom: 25px;
+  margin-bottom: 10px;
+  width:70px;
+  height: 70px;
 `;
 
 export const AreaInput = styled.View`

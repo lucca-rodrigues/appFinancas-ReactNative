@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import { View, Text } from 'react-native';
+
+import firebase from '../../Services/firebaseConnection';
 
 import {
   Background, Container, Logo, AreaInput, Input, SubmitButton, SubmitText, LoginLink, LoginText,
@@ -8,6 +9,15 @@ import {
 export default function Login({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  async function FazerLogin(){
+    if (email !== '' & password !== ''){
+      firebase.auth().signInWithEmailAndPassword(email, password)
+      .catch((error)=>{
+        alert(error.code);
+      })
+    }
+  }
 
   return (
     <Background>
@@ -35,7 +45,7 @@ export default function Login({ navigation }) {
           />
         </AreaInput>
 
-        <SubmitButton onPress={()=>{}}>
+        <SubmitButton onPress={FazerLogin}>
           <SubmitText>Acessar</SubmitText>
         </SubmitButton>
 
